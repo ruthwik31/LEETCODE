@@ -1,0 +1,19 @@
+class Solution {
+public:
+    double myPow(double x, int n) {
+        long nn=n;
+        if(n<0){
+            nn=-nn;
+            x=1/x;
+        }
+        double res=1;
+        double xx=x;
+        for(long i=nn;i>0;i=i/2){
+            if(i%2==1){
+                res*=xx;
+            }
+            xx*=xx;
+        }
+        return res;
+    }
+};
