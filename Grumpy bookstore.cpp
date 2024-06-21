@@ -22,7 +22,29 @@ public:
         return result;
     }
 };
-///////////////////approach 2
+//approach 2>>>>1
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int min) {
+        int n=customers.size();
+        int sat=0;
+        int cuus=0;
+        for(int i=0;i<n;i++){
+            cuus+=(customers[i]*(1-grumpy[i]));
+        }
+        for(int i=0;i<n;i++){
+            if(grumpy[i]==1){
+                cuus+=customers[i];
+            }
+            if(i>=min && grumpy[i-min]==1){
+                cuus-=customers[i-min];
+            }
+            sat=max(sat,cuus);
+        }
+        return sat;
+    }
+};
+///////////////////approach 3
 class Solution {
 public:
     int maxSatisfied(const vector<int>& customers, const vector<int>& grumpy, const int minutes) {
