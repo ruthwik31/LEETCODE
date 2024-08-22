@@ -1,0 +1,39 @@
+//https://leetcode.com/problems/reverse-words-in-a-string/description/
+
+//cpp
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n=s.length();
+        string ans="";
+        string re="";
+        vector<string>store;
+        for(int i=0;i<=n-1;i++){
+            if(s[i]!=' '){
+                re+=s[i];
+            }
+            else if(!re.empty()){
+                store.push_back(re);
+                re="";
+            }
+        }
+        if(!re.empty()){
+            store.push_back(re);
+        }
+        for(int i=store.size()-1;i>=0;i--){
+            ans+=store[i];
+            if(i>0){
+            ans+=" ";
+            }
+        }
+        return ans;
+    }
+};
+
+//python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        res=s.split()
+        res.reverse()
+        ans=" ".join(res)
+        return ans
